@@ -1,5 +1,5 @@
 <?php
-include('fns.php')
+require_once('fns.php');
 ?>
 
 <!DOCTYPE html>
@@ -36,26 +36,26 @@ include('fns.php')
         </div>
         <div class="nav_menu">
           <ul>
-            <a href="/inventory_mgmt">
-              <li class="<?= uriCheck('/inventory_mgmt/') ? 'nav_button_active' : 'nav_button'; ?> nav_button">
+            <a href="/">
+              <li class="<?= uriCheck('/') ? 'nav_button_active' : 'nav_button'; ?> nav_button">
                 <img src="assets/images/dashboard.svg" alt="Dashboard">
                 <p>Dashboard</p>
               </li>
             </a>
-            <a href="/inventory_mgmt/products.php">
-              <li class="<?= uriCheck('/inventory_mgmt/products.php') ? 'nav_button_active' : 'nav_button'; ?> nav_button">
+            <a href="/products">
+              <li class="<?= uriCheck('/products') ? 'nav_button_active' : 'nav_button'; ?> nav_button">
                 <img src="assets/images/products.svg" alt="Products">
                 <p>Products</p>
               </li>
             </a>
-            <a href="/inventory_mgmt/categories.php">
-              <li class="<?= uriCheck('/inventory_mgmt/categories.php') ? 'nav_button_active' : 'nav_button'; ?> nav_button">
+            <a href="/categories">
+              <li class="<?= uriCheck('/categories') ? 'nav_button_active' : 'nav_button'; ?> nav_button">
                 <img src="assets/images/category.svg" alt="Categories">
                 <p>Categories</p>
               </li>
             </a>
-            <a href="/inventory_mgmt/orders.php">
-              <li class="<?= uriCheck('/inventory_mgmt/orders.php') ? 'nav_button_active' : 'nav_button'; ?> nav_button">
+            <a href="/orders">
+              <li class="<?= uriCheck('/orders') ? 'nav_button_active' : 'nav_button'; ?> nav_button">
                 <img src="assets/images/order.svg" alt="Orders">
                 <p>Orders</p>
               </li>
