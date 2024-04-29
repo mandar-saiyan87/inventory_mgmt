@@ -1,5 +1,5 @@
 <?php
-require_once('fns.php');
+require_once('utils/fns.php');
 ?>
 
 <!DOCTYPE html>

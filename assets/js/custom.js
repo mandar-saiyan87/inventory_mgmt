@@ -3,12 +3,15 @@ $(window).resize(function () {
 
 });
 
+
 $(document).ready(function () {
 
     // Show / hide sidemenu   
     sidemenushow()
     sidemenuclose()
     sidebarcloseouside()
+
+
 });
 
 function sidemenushow(e) {
@@ -30,6 +33,7 @@ function sidebarcloseouside() {
         }
     })
 }
+
 
 
 
