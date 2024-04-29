@@ -11,6 +11,9 @@ $(document).ready(function () {
     sidemenuclose()
     sidebarcloseouside()
 
+    // Get Product ID to fetch details
+    getDetails()
+
 
 });
 
@@ -34,6 +37,23 @@ function sidebarcloseouside() {
     })
 }
 
+function getDetails() {
+    $('.getdetails').on('click', function () {
+        const prodId = $(this).data('id')
+        $.ajax({
+            url: "http://localhost:8080/products",
+            type: "post",
+            data: { prodId: prodId },
+            dataType: 'text',
+            success: function (response) {
+                console.log(response)
+            },
+            error: function (request, status, error) {
+                console.log(request.responseText, error)
+            }
+        })
+    })
+}
 
 
 

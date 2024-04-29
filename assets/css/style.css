@@ -29,6 +29,7 @@ body {
 
 ::-webkit-scrollbar {
 	width: 5px;
+	height: 5px;
 }
 
 /* Track */
@@ -44,6 +45,24 @@ body {
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
+	background: #555;
+}
+
+/* Horizontal scrollbar */
+/* ::-webkit-scrollbar-horizontal {
+	height: 5px;
+} */
+
+::-webkit-scrollbar-track-horizontal {
+	background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb:horizontal {
+	background: #8392A7;
+	border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover:horizontal {
 	background: #555;
 }
 
@@ -113,19 +132,20 @@ img {
 	font-size: 14px;
 	text-align: center;
 	color: #fff;
+	font-weight: 500;
 	display: inline-block;
 	border-radius: 30px;
-	background: #3b7cff;
+	background: var(--primary-color);
 	box-shadow: 0px 5px 20px rgba(59, 124, 255, 0.2);
-	padding: 10px 22px;
-	border: 1px solid #3b7cff;
-	;
+	padding: 13px 25px;
+	border: 1px solid var(--primary-color);
+	margin: 1rem 0;
 	line-height: 1;
 }
 
 .common_btn:hover {
 	background-color: #fff;
-	color: #3b7cff;
+	color: var(--primary-color);
 }
 
 .main_wrapper {
@@ -338,12 +358,31 @@ img {
 	margin-top: calc(420px + 1rem);
 }
 
-.table_container .table {
+
+.dashboard_table_container {
 	color: red;
 }
 
 
+.products_table_container .table {
+	margin: 1rem 0;
+}
 
+.table_title {
+	font-weight: 600;
+}
+
+.orders_purchase_table {
+	margin: 1rem 0;
+}
+
+.orders_sales_table {
+	margin: 1rem 0;
+}
+
+.category_table {
+	margin: 1rem 0;
+}
 
 
 
