@@ -41,12 +41,12 @@ function getDetails() {
     $('.getdetails').on('click', function () {
         const prodId = $(this).data('id')
         $.ajax({
-            url: "http://localhost:8080/products",
+            url: "http://localhost:3000/products",
             type: "post",
             data: { prodId: prodId },
-            dataType: 'text',
             success: function (response) {
-                console.log(response)
+                // console.log(response)
+                $('.viewProdDetails').html(response)
             },
             error: function (request, status, error) {
                 console.log(request.responseText, error)

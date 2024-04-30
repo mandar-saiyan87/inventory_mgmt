@@ -25,11 +25,11 @@ include('common/nav.php');
         <?php foreach ($products as $product) : ?>
           <tr>
 
-            <td><?php echo $product["sku"] ?></td>
-            <td><?php echo $product["name"] ?></td>
-            <td><?php echo $product["stock"] ?></td>
-            <td><?php echo $product["category"] ?></td>
-            <td><?php echo $product["price"] ?></td>
+            <td><?= $product["sku"] ?></td>
+            <td><?= $product["name"] ?></td>
+            <td><?= $product["stock"] ?></td>
+            <td><?= $product["category"] ?></td>
+            <td><?= $product["price"] ?></td>
             <td>
               <div class="btn-group">
                 <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -49,6 +49,8 @@ include('common/nav.php');
       </tbody>
     </table>
   </div>
+
+  <!---------------- Add New Product Modal Start ------------------------------------->
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -92,28 +94,23 @@ include('common/nav.php');
       </div>
     </div>
   </div>
+  <!---------------- Add New Product Modal End ------------------------------------->
+
+  <!------------ Product Detail Modal Start----------------------->
   <div class="modal fade" id="productDetails" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel"><?= $prodDetails["sku"] ?></h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <div>
-            <p>Prduct Name: <?= $prodDetails["name"] ?></p>
-            <p>Prduct Category: <?= $prodDetails["category"] ?></p>
-            <p>Prduct Details: <?= $prodDetails["description"] ?></p>
-            <p>Prduct Stock: <?= $prodDetails["stock"] ?></p>
-            <p>Prduct Price: <?= $prodDetails["price"] ?></p>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          </div>
+      <div class="modal-content viewProdDetails">
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         </div>
       </div>
     </div>
   </div>
+  <!------------ Product Detail Modal Start----------------------->
+
+
+
 </div>
 <!-- Main Content End -->
 <?php
