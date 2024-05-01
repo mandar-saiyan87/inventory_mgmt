@@ -42,11 +42,43 @@ function getDetails() {
         const prodId = $(this).data('id')
         $.ajax({
             url: "http://localhost:3000/products",
-            type: "post",
-            data: { prodId: prodId },
+            type: "POST",
+            data: {
+                action: 'getDetails',
+                prodId: prodId
+
+            },
             success: function (response) {
                 // console.log(response)
                 $('.viewProdDetails').html(response)
+            },
+            error: function (request, status, error) {
+                console.log(request.responseText, error)
+            }
+        })
+    })
+
+    $('.editproduct').on('click', function () {
+        const prodId = $(this).data('id')
+        $.ajax({
+            url: "http://localhost:3000/products",
+            type: "POST",
+            data: {
+                action: 'editDetails',
+                prodId: prodId
+            },
+            success: function (response) {
+                // console.log(response)
+                let prodDetails = JSON.parse(response)
+                $('#eSku').val(prodDetails['sku'])
+                $('#eName').val(prodDetails['name'])
+                $('#eTextArea').val(prodDetails['description'])
+                $('#eStock').val(prodDetails['stock'])
+                $('#ePurchase').val(prodDetails['purchase'])
+                $('#eSales').val(prodDetails['sales'])
+                $('#eQty').val(prodDetails['qty'])
+                $('#eCategory').val(prodDetails['category'])
+                $('#ePrice').val(prodDetails['price'])
             },
             error: function (request, status, error) {
                 console.log(request.responseText, error)

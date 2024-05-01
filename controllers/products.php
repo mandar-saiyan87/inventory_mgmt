@@ -8,11 +8,68 @@ foreach ($products as $product) {
   array_push($categories, $product['category']);
 }
 
+// Unique values from array
 $unique_category = array_unique($categories);
 
+// Add New Product
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+  // echoReq($_POST);
+  if (isset($_POST['addnew'])) {
+    extract($_POST);
+    $success = [];
+    try {
+      $addnew = $db->query("insert into products (`sku`, `name`, `description`, `stock`, `purchase`, `sales`, `qty`, `price`, `category`) values ('$sku','$name','$description','$stock','$purchase','$sales','$qty','$price','$category')");
 
+      if ($addnew) {
+        $success['body'] = 'New Product added';
+        header('LOCATION: products');
+        die();
+      }
+    } catch (PDOException $e) {
+      echo "Error: " . $e->getMessage();
+    }
+  }
+}
 
-if ($_POST['prodId']) {
+// Edit existing products
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+  if (isset($_POST['editproduct'])) {
+    $id = $_GET['id'];
+    extract($_POST);
+    $success = [];
+    try {
+      $addnew = $db->query("update products set sku='$editsku', name='$editname', description='$editdescription', stock='$editstock', purchase='$editpurchase', sales='$editsales', qty='$editqty', price='$editprice', category='$editcategory' where id=$id");
+
+      if ($addnew) {
+        $success['body'] = 'Product Updated Successfully';
+        header('LOCATION: products');
+        die();
+      }
+    } catch (PDOException $e) {
+      echo "Error: " . $e->getMessage();
+    }
+  }
+}
+
+// Delete Product
+if (isset($_GET['delid'])) {
+  // echoReq($_GET);
+  extract($_GET);
+  $success = [];
+  try {
+    $delProd = $db->query("delete from products where id=$delid");
+    if ($delprod) {
+      $success['body'] = 'Product deleted.';
+      header('LOCATION: products');
+      die();
+    }
+  } catch (PDOException $e) {
+    echo "Error: " . $e->getMessage();
+  }
+}
+
+// Get details to show product details
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_POST['action'] === 'getDetails') {
   extract($_POST);
   try {
     $prodDetails = $db->query("select * from products where id=$prodId")->fetch(PDO::FETCH_ASSOC);
@@ -38,6 +95,20 @@ if ($_POST['prodId']) {
     echo "Error: " . $e->getMessage();
   }
 }
+
+// Get existing details to edit in modal
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_POST['action'] === 'editDetails') {
+  extract($_POST);
+  try {
+    $prodDetails = $db->query("select * from products where id=$prodId")->fetch(PDO::FETCH_ASSOC);
+    // echoReq($prodDetails);
+    echo json_encode($prodDetails);
+    die();
+  } catch (PDOException $e) {
+    echo "Error: " . $e->getMessage();
+  }
+}
+
 
 $header_name = 'Products';
 include('views/products.view.php');
