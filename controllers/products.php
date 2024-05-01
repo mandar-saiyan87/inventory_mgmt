@@ -16,12 +16,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   // echoReq($_POST);
   if (isset($_POST['addnew'])) {
     extract($_POST);
-    $success = [];
     try {
       $addnew = $db->query("insert into products (`sku`, `name`, `description`, `stock`, `purchase`, `sales`, `qty`, `price`, `category`) values ('$sku','$name','$description','$stock','$purchase','$sales','$qty','$price','$category')");
 
       if ($addnew) {
-        $success['body'] = 'New Product added';
         header('LOCATION: products');
         die();
       }
@@ -36,12 +34,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   if (isset($_POST['editproduct'])) {
     $id = $_GET['id'];
     extract($_POST);
-    $success = [];
     try {
       $addnew = $db->query("update products set sku='$editsku', name='$editname', description='$editdescription', stock='$editstock', purchase='$editpurchase', sales='$editsales', qty='$editqty', price='$editprice', category='$editcategory' where id=$id");
 
       if ($addnew) {
-        $success['body'] = 'Product Updated Successfully';
         header('LOCATION: products');
         die();
       }
@@ -55,13 +51,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 if (isset($_GET['delid'])) {
   // echoReq($_GET);
   extract($_GET);
-  $success = [];
   try {
     $delProd = $db->query("delete from products where id=$delid");
-    if ($delprod) {
-      $success['body'] = 'Product deleted.';
+    if ($delProd) {
       header('LOCATION: products');
-      die();
     }
   } catch (PDOException $e) {
     echo "Error: " . $e->getMessage();

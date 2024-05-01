@@ -62,35 +62,35 @@ include('common/nav.php');
           <form action="products" method="POST">
             <div class="mb-3">
               <label for="exampleInputSku" class="form-label">SKU</label>
-              <input type="text" class="form-control" id="exampleSku" aria-describedby="sku" name='sku'>
+              <input type="text" class="form-control" id="exampleSku" aria-describedby="sku" name='sku' required>
             </div>
             <div class="mb-3">
               <label for="exampleInputName" class="form-label">Name</label>
-              <input type="text" class="form-control" id="exampleName" aria-describedby="name" name='name'>
+              <input type="text" class="form-control" id="exampleName" aria-describedby="name" name='name' required>
             </div>
             <div class="mb-3">
               <label for="exampleInputName" class="form-label">Description</label>
-              <textarea class="form-control" placeholder="Product description" id="floatingTextarea" name="description"></textarea>
+              <textarea class="form-control" placeholder="Product description" id="floatingTextarea" name="description" required></textarea>
             </div>
             <div class="mb-3">
               <label for="exampleInputName" class="form-label">Current Stock</label>
-              <input type="number" class="form-control" id="exampleStock" aria-describedby="stock" name='stock'>
+              <input type="number" class="form-control" id="exampleStock" aria-describedby="stock" name='stock' required>
             </div>
             <div class="mb-3">
               <label for="exampleInputName" class="form-label">is purchase</label>
-              <input type="number" class="form-control" id="examplePurchase" aria-describedby="purchase" name='purchase'>
+              <input type="number" class="form-control" id="examplePurchase" aria-describedby="purchase" name='purchase' required>
             </div>
             <div class="mb-3">
               <label for="exampleInputName" class="form-label">is sales</label>
-              <input type="number" class="form-control" id="exampleSales" aria-describedby="sales" name='sales'>
+              <input type="number" class="form-control" id="exampleSales" aria-describedby="sales" name='sales' required>
             </div>
             <div class="mb-3">
               <label for="exampleInputName" class="form-label">qty</label>
-              <input type="number" class="form-control" id="exampleQty" aria-describedby="qty" name='qty'>
+              <input type="number" class="form-control" id="exampleQty" aria-describedby="qty" name='qty' required>
             </div>
             <div class="mb-3">
               <label for="exampleInputName" class="form-label">Category</label>
-              <select class="form-select" aria-label="Default select example" name='category'>
+              <select class="form-select" aria-label="Default select example" name='category' required>
                 <option selected>Select Category</option>
                 <?php foreach ($unique_category as $category) : ?>
                   <option value="<?= $category ?>"><?= $category ?></option>
@@ -99,7 +99,7 @@ include('common/nav.php');
             </div>
             <div class="mb-3">
               <label for="exampleInputName" class="form-label">price</label>
-              <input type="number" class="form-control" id="examplePrice" aria-describedby="price" name='price'>
+              <input type="number" class="form-control" id="examplePrice" aria-describedby="price" name='price' required>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -137,35 +137,35 @@ include('common/nav.php');
           <form action="products?id=<?= $product["id"] ?>" method="POST">
             <div class="mb-3">
               <label for="exampleInputSku" class="form-label">SKU</label>
-              <input type="text" class="form-control" id="eSku" aria-describedby="sku" name='editsku'>
+              <input type="text" class="form-control" id="eSku" aria-describedby="sku" name='editsku' required>
             </div>
             <div class="mb-3">
               <label for="exampleInputName" class="form-label">Name</label>
-              <input type="text" class="form-control" id="eName" aria-describedby="name" name='editname'>
+              <input type="text" class="form-control" id="eName" aria-describedby="name" name='editname' required>
             </div>
             <div class="mb-3">
               <label for="exampleInputName" class="form-label">Description</label>
-              <textarea class="form-control" placeholder="Product description" id="eTextArea" name="editdescription"></textarea>
+              <textarea class="form-control" placeholder="Product description" id="eTextArea" name="editdescription" required></textarea>
             </div>
             <div class="mb-3">
               <label for="exampleInputName" class="form-label">Current Stock</label>
-              <input type="number" class="form-control" id="eStock" aria-describedby="stock" name='editstock'>
+              <input type="number" class="form-control" id="eStock" aria-describedby="stock" name='editstock' required>
             </div>
             <div class="mb-3">
               <label for="exampleInputName" class="form-label">is purchase</label>
-              <input type="number" class="form-control" id="ePurchase" aria-describedby="purchase" name='editpurchase'>
+              <input type="number" class="form-control" id="ePurchase" aria-describedby="purchase" name='editpurchase' required>
             </div>
             <div class="mb-3">
               <label for="exampleInputName" class="form-label">is sales</label>
-              <input type="number" class="form-control" id="eSales" aria-describedby="sales" name='editsales'>
+              <input type="number" class="form-control" id="eSales" aria-describedby="sales" name='editsales' required>
             </div>
             <div class="mb-3">
               <label for="exampleInputName" class="form-label">qty</label>
-              <input type="number" class="form-control" id="eQty" aria-describedby="qty" name='editqty'>
+              <input type="number" class="form-control" id="eQty" aria-describedby="qty" name='editqty' required>
             </div>
             <div class="mb-3">
               <label for="exampleInputName" class="form-label">Category</label>
-              <select class="form-select" aria-label="Default select example" id="eCategory" name='editcategory'>
+              <select class="form-select" aria-label="Default select example" id="eCategory" name='editcategory' required>
                 <option selected>Select Category</option>
                 <?php foreach ($unique_category as $category) : ?>
                   <option value="<?= $category ?>"><?= $category ?></option>
@@ -174,7 +174,7 @@ include('common/nav.php');
             </div>
             <div class="mb-3">
               <label for="exampleInputName" class="form-label">price</label>
-              <input type="number" class="form-control" id="ePrice" aria-describedby="price" name='editprice'>
+              <input type="number" class="form-control" id="ePrice" aria-describedby="price" name='editprice' required>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

@@ -157,7 +157,7 @@ img {
 	height: 100%;
 	overflow: hidden;
 	position: relative;
-	max-width: 1536px;
+	width: 100%;
 	margin: auto;
 }
 
