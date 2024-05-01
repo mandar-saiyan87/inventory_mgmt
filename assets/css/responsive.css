@@ -108,6 +108,11 @@
   } */
 }
 
-@media (max-width: 575px) {}
+@media (max-width: 575px) {
+  .login_container {
+    width: 20rem;
+
+  }
+}
 
 @media (max-width: 375px) {}

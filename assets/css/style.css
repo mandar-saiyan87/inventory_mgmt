@@ -183,7 +183,7 @@ img {
 }
 
 .login_container {
-	width: max-content;
+	width: 30rem;
 	background-color: var(--primary-color);
 	padding: 3rem 1.5rem;
 	border-radius: 1rem;

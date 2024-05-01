@@ -11,6 +11,7 @@ foreach ($products as $product) {
 // Unique values from array
 $unique_category = array_unique($categories);
 
+
 // Add New Product
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   // echoReq($_POST);
@@ -20,11 +21,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       $addnew = $db->query("insert into products (`sku`, `name`, `description`, `stock`, `purchase`, `sales`, `qty`, `price`, `category`) values ('$sku','$name','$description','$stock','$purchase','$sales','$qty','$price','$category')");
 
       if ($addnew) {
+        $_SESSION['status'] = true;
+        $_SESSION['ops'] = 'added';
         header('LOCATION: products');
         die();
       }
     } catch (PDOException $e) {
-      echo "Error: " . $e->getMessage();
+      $error_message = "Error: " . $e->getMessage();
+      echo "<script>alert('$error_message')</script>";
     }
   }
 }
@@ -35,14 +39,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $id = $_GET['id'];
     extract($_POST);
     try {
-      $addnew = $db->query("update products set sku='$editsku', name='$editname', description='$editdescription', stock='$editstock', purchase='$editpurchase', sales='$editsales', qty='$editqty', price='$editprice', category='$editcategory' where id=$id");
-
-      if ($addnew) {
+      $editprod = $db->query("update products set sku='$editsku', name='$editname', description='$editdescription', stock='$editstock', purchase='$editpurchase', sales='$editsales', qty='$editqty', price='$editprice', category='$editcategory' where id=$id");
+      if ($editprod) {
+        $_SESSION['status'] = true;
+        $_SESSION['ops'] = 'edited';
         header('LOCATION: products');
         die();
       }
     } catch (PDOException $e) {
-      echo "Error: " . $e->getMessage();
+      $error_meassage = "Error: " . $e->getMessage();
     }
   }
 }
@@ -54,10 +59,14 @@ if (isset($_GET['delid'])) {
   try {
     $delProd = $db->query("delete from products where id=$delid");
     if ($delProd) {
+      $_SESSION['status'] = true;
+      $_SESSION['ops'] = 'deleted';
       header('LOCATION: products');
+      die();
     }
   } catch (PDOException $e) {
-    echo "Error: " . $e->getMessage();
+    $error_message = "Error: " . $e->getMessage();
+    echo "<script>alert('$error_message')</script>";
   }
 }
 

@@ -22,31 +22,28 @@
 </head>
 
 <body>
-  <div class="main_wrapper">
 
-    <!-- Main Content Start -->
-    <div class="login_form">
-      <div class="login_container">
-        <div class="login_ico">
-          <img src="assets/images/login.svg" alt="login">
-          <p>Login</p>
-        </div>
-        <form>
-          <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Email address</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-          </div>
-          <div class="mb-5">
-            <label for="exampleInputPassword1" class="form-label">Password</label>
-            <input type="password" class="form-control" id="exampleInputPassword1">
-          </div>
-          <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
+  <!-- Main Content Start -->
+  <div class="login_form">
+    <div class="login_container">
+      <div class="login_ico">
+        <img src="assets/images/login.svg" alt="login">
+        <p>Login</p>
       </div>
+      <form action="/login" method="POST">
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Email address</label>
+          <input type="text" name="username" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+        </div>
+        <div class="mb-5">
+          <label for="exampleInputPassword1" class="form-label">Password</label>
+          <input type="password" name="password" class="form-control" id="exampleInputPassword1" required>
+        </div>
+        <button type="submit" name="login" class="btn btn-primary">Submit</button>
+      </form>
     </div>
-    <!-- Main Content End -->
   </div>
+  <!-- Main Content End -->
 
   <script src="assets/js/jquery3.5.1.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>

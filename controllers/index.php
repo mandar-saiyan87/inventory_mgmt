@@ -31,6 +31,14 @@ foreach ($products as $product) {
 
 // echoReq($totalpurchase);
 
+if (
+  $_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['logout'])
+) {
+  unset($_SESSION['logged_in']);
+  unset($_SESSION['user']);
+  header("location: login");
+}
+
 $header_name = 'Dashboard';
 
 include('views/index.views.php');
